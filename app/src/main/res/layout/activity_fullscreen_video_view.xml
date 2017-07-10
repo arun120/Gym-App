@@ -1,0 +1,95 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.gymv02.FullscreenVideoView">
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:id="@+id/content">
+
+        <VideoView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ful_video"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="100%"
+            android:textColor="#FFFFFF"
+            android:id="@+id/volume_text"
+            android:visibility="invisible"
+            android:layout_gravity="center" />
+    </FrameLayout>
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+        <android.support.v7.widget.Toolbar
+            style="@style/ToolBarStyle"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:background="@color/black_overlay"
+            android:layout_marginTop="15dp"
+            android:minHeight="@dimen/abc_action_bar_default_height_material"
+            android:id="@+id/full_toolbar" />
+
+        <RelativeLayout android:id="@+id/fullscreen_content_controls"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            tools:ignore="UselessParent">
+
+            <com.rey.material.widget.Slider
+                android:id="@+id/seek1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:sl_value="0"
+                app:sl_secondaryColor="#66FFFFFF"
+                android:layout_margin="05dp"
+                style="@style/LightSlider"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pause1"
+                android:layout_below="@+id/seek1"
+                android:src="@drawable/pause"
+                android:layout_margin="3dp"
+                android:background="@drawable/button_select"
+                />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tilt"
+                android:layout_below="@+id/seek1"
+                android:src="@drawable/tilt"
+                android:layout_alignParentRight="true"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_select" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="00:00:00/00:00:00"
+                android:id="@+id/duration"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="25dp"
+                android:layout_below="@+id/seek1"
+                android:textColor="@color/sliderprimary" />
+
+        </RelativeLayout>
+
+
+    </FrameLayout>
+
+</FrameLayout>

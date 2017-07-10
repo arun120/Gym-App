@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorLight">#C5CAE9</color>
+    <color name="colorAccent">#00B8D4</color>
+    <color name="textPrimary">#212121</color>
+    <color name="textSecondary">#727272</color>
+    <color name="divider">#B6B6B6</color>
+    <color name="sliderprimary">#FFFFFF</color>
+    <color name="sliderSecondary">#FCFCFC</color>
+    <color name="textnormal">#FAFAFA</color>
+    <color name="textselect">#449def</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="main_color">#55acef</color>
+    <color name="colorAccentQuarter">#3300E5FF</color>
+    <color name="colorPrimaryHalf">#9003A9F4</color>
+</resources>
