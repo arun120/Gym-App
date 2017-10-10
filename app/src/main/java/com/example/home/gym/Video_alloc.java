@@ -9,7 +9,9 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,8 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Connection;
@@ -27,14 +31,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import static com.google.android.gms.internal.zzs.TAG;
 
 public class Video_alloc extends android.support.v4.app.Fragment implements RecyclerViewAdapternew.OnItemClickListener {
 
     String text = new String();
     Dbconnect dbconnect = new Dbconnect();
     String vid[] = new String[50];
-    RecyclerViewAdapternew myadapter;
-    RecyclerView myrecycler;
 
     public Video_alloc() {
         // Required empty public constructor
@@ -44,31 +49,55 @@ public class Video_alloc extends android.support.v4.app.Fragment implements Recy
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_video_alloc, container, false);
+        return inflater.inflate(R.layout.fragment_videoalloc, container, false);
 
 
 
     }
+    String userid=null;
+    RecyclerViewAdapternew myadapter;
+    RecyclerView myrecycler;
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+//        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+//        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
+        DefaultItemAnimator itemAnimator=new DefaultItemAnimator();
+        itemAnimator.setAddDuration(1000);
 
         if (getArguments() != null) {
             text = getArguments().getString("user");
 
         }
-// set an exit transition
 
-        DefaultItemAnimator itemAnimator=new DefaultItemAnimator();
-        itemAnimator.setAddDuration(1000);
-
-        myrecycler= (RecyclerView) getActivity().findViewById(R.id.myrecyclerview);
+        myrecycler= (RecyclerView) getActivity().findViewById(R.id.listView);
         myadapter=new RecyclerViewAdapternew(getActivity().getApplicationContext());
         myadapter.setOnItemClickListener(this);
+        String[] name=new String[]{"Chest","Abs","Shoulder","Arms","Sixpack","Legs","Back arms","Gym"};
+        ArrayList<String> list=new ArrayList<>();
+        for(int i=0;i<name.length;i++){
+            Random r=new Random();
+            int ii=r.nextInt(7)+0;
+            Log.d(TAG, "onActivityCreated: Adadei "+String.valueOf(ii)+" added");
+            myadapter.add(myadapter.getItemCount(),name[i],name[i],i,getContext());
+        }
+
         myrecycler.setAdapter(myadapter);
         myrecycler.setItemAnimator(itemAnimator);
-        myrecycler.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(),2,LinearLayoutManager.VERTICAL,false));
+        myrecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+// set an exit transition
+//
+//        DefaultItemAnimator itemAnimator=new DefaultItemAnimator();
+//        itemAnimator.setAddDuration(1000);
+//
+//        myrecycler= (RecyclerView) getActivity().findViewById(R.id.myrecyclerview);
+//        myadapter=new RecyclerViewAdapternew(getActivity().getApplicationContext());
+//        myadapter.setOnItemClickListener(this);
+//        myrecycler.setAdapter(myadapter);
+//        myrecycler.setItemAnimator(itemAnimator);
+//        myrecycler.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(),2,LinearLayoutManager.VERTICAL,false));
 
         //  Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
         dbconnect.execute(text);
@@ -77,10 +106,11 @@ public class Video_alloc extends android.support.v4.app.Fragment implements Recy
 
     @Override
     public void onItemClick(RecyclerViewAdapternew.ItemHolder item, int position) {
-        Intent intent = new Intent(getActivity(), Display.class);
-        intent.putExtra("user", text);
-        intent.putExtra("videoid", vid[position]);
-        startActivity(intent);
+        Toast.makeText(getContext(),"lol",Toast.LENGTH_LONG).show();
+//        Intent intent = new Intent(getActivity(), Display.class);
+//        intent.putExtra("user", text);
+//        intent.putExtra("videoid", vid[position]);
+//        startActivity(intent);
     }
 
     public class Dbconnect extends AsyncTask<String, Void, String[]> {
@@ -169,11 +199,11 @@ public class Video_alloc extends android.support.v4.app.Fragment implements Recy
              for(j=0;j<i;j++)
             {
             if(vid[j]!=null)
-                myadapter.add(myadapter.getItemCount(),name[j],des[j],vid[j],text,getActivity().getApplicationContext(),getActivity());
+    //            myadapter.add(myadapter.getItemCount(),name[j],des[j],vid[j],text,getActivity().getApplicationContext(),getActivity());
                 ls.add(name[j]);
                 ls.add(des[j]);
             }
-            CustomArrayAdapter arrayAdapter=new CustomArrayAdapter(getActivity().getApplicationContext(),ls,desc,text);
+            //CustomArrayAdapter arrayAdapter=new CustomArrayAdapter(getActivity().getApplicationContext(),ls,desc,text);
             //listView.setAdapter(arrayAdapter);
             /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

@@ -2,12 +2,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:ctc="http://schemas.android.com/apk/res/com.example.home.gym"
+    android:background="#635f82"
     tools:context="com.example.home.gym.Others">
-
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/tools"
+        app:cardElevation="5dp"
+        android:id="@+id/mybar"
+        app:cardUseCompatPadding="true"
+        >
 
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#323042">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/front"
+            android:layout_centerVertical="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#f8f8f8"
+                android:textSize="17sp"
+                android:id="@+id/fronttext"
+                android:layout_marginLeft="50dp"
+                android:text="Front View"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="2dp"
+            android:id="@+id/fronton"
+            android:layout_marginTop="2dp"
+            android:layout_below="@+id/front"
+            android:layout_marginLeft="60dp"
+            android:background="#6659CE"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:id="@+id/back"
+            android:layout_centerVertical="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#bdbdbd"
+                android:textSize="17sp"
+                android:id="@+id/backtext"
+                android:layout_marginRight="50dp"
+                android:text="Back View"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="2dp"
+            android:id="@+id/backon"
+            android:visibility="gone"
+            android:layout_below="@+id/back"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="60dp"
+            android:background="#6659CE"/>
+        </RelativeLayout></android.support.v7.widget.CardView>
+
+    <com.example.home.gym.ImageMap
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ctc:map="mymap"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/map"
+        android:layout_below="@+id/mybar"
+        android:src="@drawable/body_1"
+        ctc:scaleFromOriginal="false"
+        />
+    <com.example.home.gym.ImageMap
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ctc:map="mymap"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/mybar"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/map1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:visibility="gone"
+        android:src="@drawable/body_2"
+        ctc:scaleFromOriginal="false"
+        />
+</RelativeLayout>
+<!--ctc:maxSizeFactor="1.5"
+        ctc:scaleFromOriginal="true"-->
 </FrameLayout>

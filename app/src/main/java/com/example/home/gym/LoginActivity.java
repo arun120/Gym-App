@@ -165,7 +165,7 @@ public class LoginActivity extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent = new Intent(LoginActivity.this, FragmentManagement.class);
+                        Intent intent = new Intent(LoginActivity.this, Homepage.class);
                         intent.putExtra("user", user);
                         startActivity(intent);
 

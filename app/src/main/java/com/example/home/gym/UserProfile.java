@@ -65,7 +65,7 @@ public class UserProfile extends android.support.v4.app.Fragment {
     String contact=new String();
     String gender=new String();
     String text=new String();
-    TextView slide_name,slide_email,mgender,mname,mmail,moccupation,mcontact;
+    //TextView slide_name,slide_email,mgender,mname,mmail,moccupation,mcontact;
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -102,14 +102,6 @@ public class UserProfile extends android.support.v4.app.Fragment {
         //Make the image view full blurred with black and white color and set translucent background
         dbForHealth.execute(text);
         imageview = (ImageView) getActivity().findViewById(R.id.profile_back);
-        view=getActivity().findViewById(R.id.sample_bg);
-        slide_name= (TextView) getActivity().findViewById(R.id.slide_name);
-        slide_email= (TextView) getActivity().findViewById(R.id.slide_mail);
-        mname= (TextView) getActivity().findViewById(R.id.mname);
-        mmail= (TextView) getActivity().findViewById(R.id.mail);
-        mgender= (TextView) getActivity().findViewById(R.id.gender);
-        moccupation= (TextView) getActivity().findViewById(R.id.occupation);
-        mcontact= (TextView) getActivity().findViewById(R.id.contact);
         CircleImageView dp = (CircleImageView) getActivity().findViewById(R.id.dp1);
         dp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -283,11 +275,6 @@ public class UserProfile extends android.support.v4.app.Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            mname.setText(name + ',' + age);
-            mmail.setText(email);
-            moccupation.setText(oc);
-            mgender.setText(gender);
-            mcontact.setText(contact);
 
         }
     }

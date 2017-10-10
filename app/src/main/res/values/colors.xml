@@ -4,6 +4,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorLight">#C5CAE9</color>
+    <color name="nav_main">#fafafa</color>
+    <color name="navigation_bottom">#915ba6</color>
     <color name="colorAccent">#00B8D4</color>
     <color name="textPrimary">#212121</color>
     <color name="textSecondary">#727272</color>
@@ -14,6 +16,18 @@
     <color name="textselect">#449def</color>
     <color name="black_overlay">#66000000</color>
     <color name="main_color">#55acef</color>
+    <color name="app_bg">#f8f8f8</color>
+    <color name="ada1">#F25EEB</color>
+    <color name="ada2">#5C3C99</color>
+    <color name="ada3">#48CAF3</color>
+    <color name="ada4">#FBB66F</color>
+    <color name="ada5">#BFF076</color>
+    <color name="ada6">#E74C3C</color>
+    <color name="ada7">#2C3E50</color>
+    <color name="ada8">#212121</color>
+    <color name="white">#f8f8f8</color>
+    <color name="grey">#bdbdbd</color>
     <color name="colorAccentQuarter">#3300E5FF</color>
     <color name="colorPrimaryHalf">#9003A9F4</color>
+
 </resources>
