@@ -173,6 +173,7 @@ public class ImageMap extends ImageView
 		loadAttributes(attrs);
 	}
 
+
 	public ImageMap(Context context, AttributeSet attrs, int defStyle)
 	{
 		super(context, attrs, defStyle);

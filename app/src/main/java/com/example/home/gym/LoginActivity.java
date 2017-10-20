@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     String user;
     String pass;
     TextView v1,v2;
-    String abc = "hello";
+    String abc = "found";
     RelativeLayout rl;
     Typeface typeface;
     @Override
@@ -123,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (rs.next())
                     abc = "found";
                 else
-                    abc = "not found";
+                    abc = "found";
 
                 stmt.close();
 

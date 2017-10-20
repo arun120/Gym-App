@@ -60,9 +60,6 @@ public class Video_alloc extends android.support.v4.app.Fragment implements Recy
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-//        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-//        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-
         DefaultItemAnimator itemAnimator=new DefaultItemAnimator();
         itemAnimator.setAddDuration(1000);
 
@@ -80,37 +77,25 @@ public class Video_alloc extends android.support.v4.app.Fragment implements Recy
             Random r=new Random();
             int ii=r.nextInt(7)+0;
             Log.d(TAG, "onActivityCreated: Adadei "+String.valueOf(ii)+" added");
-            myadapter.add(myadapter.getItemCount(),name[i],name[i],i,getContext());
+            myadapter.add(myadapter.getItemCount(),name[i],name[i],ii,getContext());
         }
 
         myrecycler.setAdapter(myadapter);
         myrecycler.setItemAnimator(itemAnimator);
         myrecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-// set an exit transition
-//
-//        DefaultItemAnimator itemAnimator=new DefaultItemAnimator();
-//        itemAnimator.setAddDuration(1000);
-//
-//        myrecycler= (RecyclerView) getActivity().findViewById(R.id.myrecyclerview);
-//        myadapter=new RecyclerViewAdapternew(getActivity().getApplicationContext());
-//        myadapter.setOnItemClickListener(this);
-//        myrecycler.setAdapter(myadapter);
-//        myrecycler.setItemAnimator(itemAnimator);
-//        myrecycler.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(),2,LinearLayoutManager.VERTICAL,false));
-
-        //  Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
         dbconnect.execute(text);
 
     }
 
     @Override
     public void onItemClick(RecyclerViewAdapternew.ItemHolder item, int position) {
-        Toast.makeText(getContext(),"lol",Toast.LENGTH_LONG).show();
-//        Intent intent = new Intent(getActivity(), Display.class);
-//        intent.putExtra("user", text);
-//        intent.putExtra("videoid", vid[position]);
-//        startActivity(intent);
+        Toast.makeText(getContext(),"lol"+String.valueOf(position),Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(getActivity(), Video_list.class);
+        intent.putExtra("user", text);
+        intent.putExtra("type","Head");
+        intent.putExtra("videoid", vid[position]);
+        startActivity(intent);
     }
 
     public class Dbconnect extends AsyncTask<String, Void, String[]> {
@@ -189,33 +174,17 @@ public class Video_alloc extends android.support.v4.app.Fragment implements Recy
         protected void onPostExecute(String[] aVoid) {
             super.onPostExecute(aVoid);
             int j = 0;
-            //for(j=0;j<5;j++)
-            //  Toast.makeText(getApplicationContext(),path[j],Toast.LENGTH_SHORT).show();                                                                                                    }
 
-          //  ListView listView = (ListView) getActivity().findViewById(R.id.listView);
             ArrayList<String> ls = new ArrayList<>();
             ArrayList<String> desc = new ArrayList<>();
 
              for(j=0;j<i;j++)
             {
             if(vid[j]!=null)
-    //            myadapter.add(myadapter.getItemCount(),name[j],des[j],vid[j],text,getActivity().getApplicationContext(),getActivity());
                 ls.add(name[j]);
                 ls.add(des[j]);
             }
-            //CustomArrayAdapter arrayAdapter=new CustomArrayAdapter(getActivity().getApplicationContext(),ls,desc,text);
-            //listView.setAdapter(arrayAdapter);
-            /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    //Toast.makeText(getApplicationContext(), path[position], Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(getActivity(), Display.class);
-                    intent.putExtra("user", text);
-                    intent.putExtra("videoid", vid[position]);
-                    startActivity(intent);
-                }
-            });*/
         }
     }
 }
