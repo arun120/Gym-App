@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <maps xmlns:android="http://schemas.android.com/apk/res/android">
 <map name="mymap">
-    <area shape="poly" coords="167,86,160,0,227,0,227,86,192,96" id="@+id/area1" name = "Head"/>
-    <area shape="poly" coords="227,80,299,80,302,120,282,116,226,116" id="@+id/area2" name = "S. Dakota"/>
+    <area shape="poly" coords="140,30,260,30,260,190,140,190" id="@+id/area1" name = "Head"/>
+    <area shape="poly" coords="144,260,170,220,235,220,263,260" id="@+id/area2" name = "Chest"/>
 </map>
 </maps>
