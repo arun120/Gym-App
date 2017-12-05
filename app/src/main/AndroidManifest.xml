@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Video_alloc" />
+        <!--<activity android:name=".Video_alloc" />-->
         <activity android:name=".FullscreenVideoView" />
         <activity
             android:name=".Display"
@@ -45,7 +45,14 @@
             android:name=".ScrollingActivity"
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme" />
+
         <activity android:name=".viewCategory"></activity>
+
+        <activity
+            android:name=".Video_list"
+            android:label="@string/title_activity_video_list"
+            android:theme="@style/AppTheme"></activity>
+
     </application>
 
 </manifest>
