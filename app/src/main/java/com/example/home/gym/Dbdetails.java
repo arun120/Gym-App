@@ -8,9 +8,9 @@ public class Dbdetails {
 
 
     final private String Driver="com.mysql.jdbc.Driver";
-    final private String UserName="root";
+    final private String UserName="fluffy";
     final private String Pass="1234";
-    private String Url="jdbc:mysql://192.168.0.100:3306/gym";
+    private String Url="jdbc:mysql://192.168.1.4:3306/gym";
 
     Dbdetails() {}
 

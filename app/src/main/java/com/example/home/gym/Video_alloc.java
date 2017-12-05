@@ -39,7 +39,8 @@ public class Video_alloc extends android.support.v4.app.Fragment implements Recy
 
     String text = new String();
     Dbconnect dbconnect = new Dbconnect();
-    String vid[] = new String[50];
+    String vid[] = new String[500];
+    String[] name = new String[500];
 
     public Video_alloc() {
         // Required empty public constructor
@@ -74,16 +75,6 @@ public class Video_alloc extends android.support.v4.app.Fragment implements Recy
         myrecycler= (RecyclerView) getActivity().findViewById(R.id.listView);
         myadapter=new RecyclerViewAdapternew(getActivity().getApplicationContext());
         myadapter.setOnItemClickListener(this);
-        String[] name=new String[]{"Chest","Abs","Shoulder","Arms","Sixpack","Legs","Back arms","Gym"};
-        ArrayList<String> list=new ArrayList<>();
-        for(int i=0;i<name.length;i++){
-            Random r=new Random();
-            int ii=r.nextInt(7)+0;
-            Log.d(TAG, "onActivityCreated: Adadei "+String.valueOf(ii)+" added");
-            myadapter.add(myadapter.getItemCount(),name[i],name[i],i,getContext());
-        }
-
-        myrecycler.setAdapter(myadapter);
         myrecycler.setItemAnimator(itemAnimator);
         myrecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -106,17 +97,17 @@ public class Video_alloc extends android.support.v4.app.Fragment implements Recy
 
     @Override
     public void onItemClick(RecyclerViewAdapternew.ItemHolder item, int position) {
-        Toast.makeText(getContext(),"lol",Toast.LENGTH_LONG).show();
-//        Intent intent = new Intent(getActivity(), Display.class);
-//        intent.putExtra("user", text);
-//        intent.putExtra("videoid", vid[position]);
-//        startActivity(intent);
+        Toast.makeText(getContext(),name[position]+" "+vid[position],Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(getActivity(), Display.class);
+        intent.putExtra("user", text);
+        intent.putExtra("videoid", vid[position]);
+        startActivity(intent);
     }
 
     public class Dbconnect extends AsyncTask<String, Void, String[]> {
-        String[] des = new String[50];
-        String[] name = new String[50];
-        String[] path = new String[50];
+        String[] des = new String[500];
+
+        String[] path = new String[500];
         Dbdetails dbdetails = new Dbdetails();
         Connection connection = null;
         Statement statement = null;
@@ -196,13 +187,21 @@ public class Video_alloc extends android.support.v4.app.Fragment implements Recy
             ArrayList<String> ls = new ArrayList<>();
             ArrayList<String> desc = new ArrayList<>();
 
+            Log.i("Video","Desc");
              for(j=0;j<i;j++)
             {
             if(vid[j]!=null)
     //            myadapter.add(myadapter.getItemCount(),name[j],des[j],vid[j],text,getActivity().getApplicationContext(),getActivity());
+
+            Log.i(name[j],des[j]);
                 ls.add(name[j]);
                 ls.add(des[j]);
+                myadapter.add(myadapter.getItemCount(),name[j],vid[j],j,getContext());
             }
+
+
+            myrecycler.setAdapter(myadapter);
+
             //CustomArrayAdapter arrayAdapter=new CustomArrayAdapter(getActivity().getApplicationContext(),ls,desc,text);
             //listView.setAdapter(arrayAdapter);
             /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -19,6 +19,8 @@ public class Homepage extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment=null;
+                Bundle bundle=new Bundle();
+                bundle.putString("user",getIntent().getExtras().getString("user"));
                 switch (item.getItemId()){
                     case R.id.action_item1:
                                 fragment=new Others();
@@ -30,6 +32,7 @@ public class Homepage extends AppCompatActivity {
                                 fragment=new UserProfile();
                                 break;
                 }
+                fragment.setArguments(bundle);
                 FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.framelayout,fragment);
                 transaction.commit();

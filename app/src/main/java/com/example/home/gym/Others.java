@@ -100,6 +100,7 @@ public class Others extends android.support.v4.app.Fragment {
             {
                 // when the area is tapped, show the name in a
                 // text bubble
+                //TO-DO create video list
                 if(front.getLocationName(id)!=null)
                     Toast.makeText(getContext(),"lol "+String.valueOf(front.getLocationName(id)),Toast.LENGTH_SHORT).show();
             }

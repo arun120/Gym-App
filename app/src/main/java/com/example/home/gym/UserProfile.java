@@ -20,12 +20,16 @@ import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -57,6 +61,8 @@ public class UserProfile extends android.support.v4.app.Fragment {
 
     View view;
     ImageView imageview;
+    TextView namev,agev,ocv,emailv,contactv;
+    Button genderv;
     String name=new String();
     String age=new String();
     String fname=new String();
@@ -64,6 +70,7 @@ public class UserProfile extends android.support.v4.app.Fragment {
     String email=new String();
     String contact=new String();
     String gender=new String();
+
     String text=new String();
     //TextView slide_name,slide_email,mgender,mname,mmail,moccupation,mcontact;
     /**
@@ -97,6 +104,12 @@ public class UserProfile extends android.support.v4.app.Fragment {
             text = getArguments().getString("user");
 
         }
+        namev=(TextView) getActivity().findViewById(R.id.name);
+        genderv=(Button) getActivity().findViewById(R.id.gender);
+        ocv=(TextView) getActivity().findViewById(R.id.oc);
+        agev=(TextView) getActivity().findViewById(R.id.age);
+        contactv=(TextView) getActivity().findViewById(R.id.contact);
+        emailv=(TextView) getActivity().findViewById(R.id.email);
 
         DbForHealth dbForHealth=new DbForHealth();
         //Make the image view full blurred with black and white color and set translucent background
@@ -248,6 +261,7 @@ public class UserProfile extends android.support.v4.app.Fragment {
         protected Void doInBackground(String... params) {
             try
             {
+                Log.i("bg","inside");
                 Class.forName(dbdetails.getDriver());
                 connection= DriverManager.getConnection(dbdetails.getUrl(), dbdetails.getUserName(), dbdetails.getPass());
                 String sql="select * from personal where username like '"+params[0]+"';";
@@ -275,6 +289,13 @@ public class UserProfile extends android.support.v4.app.Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            Log.i("post","set items");
+            namev.setText(name);
+            emailv.setText(email);
+            agev.setText(age);
+            genderv.setText(gender);
+            ocv.setText(oc);
+            contactv.setText(contact);
 
         }
     }

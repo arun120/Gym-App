@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:ctc="http://schemas.android.com/apk/res/com.example.home.gym"
+    xmlns:ctc="http://schemas.android.com/apk/res-auto"
     android:background="#635f82"
     tools:context="com.example.home.gym.Others">
     <!-- TODO: Update blank fragment layout -->
