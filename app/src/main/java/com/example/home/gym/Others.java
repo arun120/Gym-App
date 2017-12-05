@@ -102,7 +102,12 @@ public class Others extends android.support.v4.app.Fragment {
                 // text bubble
                 //TO-DO create video list
                 if(front.getLocationName(id)!=null)
-                    Toast.makeText(getContext(),"lol "+String.valueOf(front.getLocationName(id)),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),String.valueOf(front.getLocationName(id)),Toast.LENGTH_SHORT).show();
+                    Intent i=new Intent(getContext(),viewCategory.class);
+                    i.putExtra("user", userid);
+                    i.putExtra("category",front.getLocationName(id).toLowerCase());
+                    startActivity(i);
+
             }
 
             @Override

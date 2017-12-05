@@ -65,7 +65,7 @@ public class viewCategory extends AppCompatActivity implements RecyclerViewAdapt
         Dbdetails dbdetails = new Dbdetails();
         Connection connection = null;
         Statement statement = null;
-        int i = 0, j = 0;
+        int size = 0, j = 0;
         Statement st=null;
         Statement st1=null;
         ResultSet rs2;
@@ -74,23 +74,25 @@ public class viewCategory extends AppCompatActivity implements RecyclerViewAdapt
             try {
                 Class.forName(dbdetails.getDriver());
                 connection = DriverManager.getConnection(dbdetails.getUrl(), dbdetails.getUserName(), dbdetails.getPass());
-                statement = connection.createStatement();
+               // statement = connection.createStatement();
 
 
                 st1 = connection.createStatement();
-                for (j = 0; j < i; j++) {
+
                     String sql2 = "select * from video where path like '%" + params[0] + "%'";
 
                     rs2 = st1.executeQuery(sql2);
                     //rs2.beforeFirst();
-                    if (rs2.next()) {
+                    while (rs2.next()) {
                         vid[j]=rs2.getString("video_id");
                         name[j] = rs2.getString("name");
+                        j++;
                     }
-                }
+                size=j;
+
                 st1.close();
-                st.close();
-                statement.close();
+               // st.close();
+              //  statement.close();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (SQLException e) {
@@ -117,7 +119,7 @@ public class viewCategory extends AppCompatActivity implements RecyclerViewAdapt
 
 
             Log.i("Video","Desc");
-            for(j=0;j<i;j++)
+            for(j=0;j<size;j++)
             {
                 if(vid[j]!=null)
                     //            myadapter.add(myadapter.getItemCount(),name[j],des[j],vid[j],text,getActivity().getApplicationContext(),getActivity());

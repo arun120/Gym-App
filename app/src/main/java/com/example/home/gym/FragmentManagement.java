@@ -41,9 +41,18 @@ public class FragmentManagement extends AppCompatActivity  {
 
 
 
+
+
+
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         ViewPager mViewPager;
         mViewPager = (ViewPager) findViewById(R.id.pager);
-
 
         args = new Bundle();
         args.putString("user", userid);
@@ -55,10 +64,7 @@ public class FragmentManagement extends AppCompatActivity  {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-
     }
-
-
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {
         private final int NUM_ITEMS = 3;

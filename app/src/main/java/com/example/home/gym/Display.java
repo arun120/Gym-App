@@ -71,7 +71,7 @@ public class Display extends AppCompatActivity {
 
 
         Toast.makeText(Display.this, vid, Toast.LENGTH_SHORT).show();
-        new Videodet().execute(vid);
+        new Videodet().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,vid);
 
         Button skip = (Button) findViewById(R.id.skip);
         Button partial = (Button) findViewById(R.id.partial);
@@ -101,7 +101,7 @@ public class Display extends AppCompatActivity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new History().execute("skip");
+                new History().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,"skip");
             }
         });
 
@@ -109,7 +109,7 @@ public class Display extends AppCompatActivity {
         partial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new History().execute("partial");
+                new History().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,"partial");
             }
         });
 
@@ -117,7 +117,7 @@ public class Display extends AppCompatActivity {
         completed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new History().execute("completed");
+                new History().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,"completed");
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {
